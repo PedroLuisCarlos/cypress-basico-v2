@@ -15,7 +15,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
       cy.get('#lastName').type('Carlos')
       cy.get('#email').type('pedrovilhalva@gmail.com')
       cy.get('#open-text-area').type(longtext, {delay: 0})
-      cy.get('button[type="submit"]').click()
+      cy.contains('button','Enviar').click()
       cy.get('.success').should('be.visible')
     })
 
@@ -24,7 +24,7 @@ describe('Central de Atendimento ao Cliente TAT', function () {
       cy.get('#lastName').type('Carlos')
       cy.get('#email').type('pedrovilhalva@gmail,com')
       cy.get('#open-text-area').type('Teste')
-      cy.get('button[type="submit"]').click()
+      cy.contains('button','Enviar').click()
       cy.get('.error').should('be.visible')
     })
 
@@ -40,7 +40,7 @@ it('exibe mensagem de erro quando o telefone se torna obrigatório mas não é p
     cy.get('#email').type('pedrovilhalva@gmail.com')
     cy.get('#phone-checkbox').click()
     cy.get('#open-text-area').type('Teste')
-    cy.get('button[type="submit"]').click()
+    cy.contains('button','Enviar').click()
     cy.get('.error').should('be.visible')
 })
 
@@ -69,9 +69,14 @@ it('preenche e limpa os campos nome, sobrenome, email e telefone', function() {
     .clear()
     .should('have.value', '') 
 })
-    it.only('envia o formuário com sucesso usando um comando customizado', function() {
-        cy.get('button[type="submit"]').click()
+    it('envia o formuário com sucesso usando um comando customizado', function() {
+        cy.contains('button','Enviar').click()
         cy.get('.error').should('be.visible')
+    })
+
+    it('envia o formuário com sucesso usando um comando customizado', function(){
+      cy.fillMandatoryFieldsAndSubmit()
+      cy.get('.success').should('be.visible')
     })
 
 
