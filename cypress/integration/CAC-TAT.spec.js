@@ -160,7 +160,7 @@ it('preenche e limpa os campos nome, sobrenome, email e telefone', function() {
       cy.get('#privacy a').should('have.attr', 'target', '_blank')
     })
 
-    it.only('acessa a página da política de privacidade removendo o target e então clicando no link', function() {
+    it('acessa a página da política de privacidade removendo o target e então clicando no link', function() {
       cy.get('#privacy a')
       .invoke('removeAttr', 'target')
       .click()
