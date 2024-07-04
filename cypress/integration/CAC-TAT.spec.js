@@ -168,7 +168,7 @@ it('preenche e limpa os campos nome, sobrenome, email e telefone', function() {
       cy.contains('Talking About Testing').should('be.visible')
     })
 
-    
+
 
 
 
